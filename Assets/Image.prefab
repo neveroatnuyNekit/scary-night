@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -93,6 +93,7 @@ MonoBehaviour:
   Image: {fileID: 0}
   IsDragging: 1
   IsEntered: 1
+  textd: {fileID: 0}
 --- !u!1 &4489541522987193191
 GameObject:
   m_ObjectHideFlags: 0

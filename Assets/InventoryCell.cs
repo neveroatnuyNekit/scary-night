@@ -9,16 +9,28 @@ public class InventoryCell : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndD
     public Item CurrentItem;
     public Image Image;
     public bool IsDragging;
-    public bool IsEntered;
+    public bool IsEntered=false;
+    public Text textd;
     // Start is called before the first frame update
     void Start()
     {
         Image = GetComponentsInChildren<Image>()[1];
         UpdateCell();
         RemoveItem();
+        IsEntered=false;
+        IsDragging=false;
     }
     private void Update()
     {
+        if(IsEntered)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                Instantiate(CurrentItem.Prefab);
+                RemoveItem();
+            }
+        }
+        //textd.text=CurrentItem.Name;
     }
     public void UpdateCell()
     {
@@ -78,11 +90,18 @@ public class InventoryCell : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndD
     {
         IsEntered = true;
         InventoryManager.Instance.EnteredCell = this;
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(CurrentItem.Prefab);
+            RemoveItem();
+        }
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         IsEntered = false;
         InventoryManager.Instance.EnteredCell = null;
+        Destroy(textd);
     }
 }

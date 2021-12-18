@@ -20,7 +20,7 @@ public class InventoryManager  : MonoBehaviour
 
     [Header("Debug")]
     private Item spawn=takei.give;
-    public Item l;
+    public Text textd;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,6 +40,7 @@ public class InventoryManager  : MonoBehaviour
             takei.give=null;
         }
         spawn=takei.give;
+        //textd.text=(.CurrentItem.Name).ToString();
         Debug.Log(spawn);
 
         if (isDraggingItem&&DraggingCell.CurrentItem)
