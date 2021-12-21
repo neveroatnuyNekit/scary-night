@@ -11,6 +11,7 @@ public class InventoryCell : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndD
     public bool IsDragging;
     public bool IsEntered=false;
     public Text textd;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class InventoryCell : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndD
         RemoveItem();
         IsEntered=false;
         IsDragging=false;
+        player =GameObject.FindGameObjectWithTag("player").transform;
     }
     private void Update()
     {
@@ -26,7 +28,7 @@ public class InventoryCell : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndD
         {
             if (Input.GetMouseButtonDown(1))
             {
-                Instantiate(CurrentItem.Prefab);
+                Instantiate(CurrentItem.Prefab,player.position,player.rotation);
                 RemoveItem();
             }
         }

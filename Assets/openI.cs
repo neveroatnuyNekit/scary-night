@@ -29,6 +29,7 @@ public class openI : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.30f);
+        Time.timeScale*=-1;
         ll=true;
     }
 }

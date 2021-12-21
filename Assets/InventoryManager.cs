@@ -20,6 +20,7 @@ public class InventoryManager  : MonoBehaviour
 
     [Header("Debug")]
     private Item spawn=takei.give;
+    private Item spawnb=D.giveb;
     public Text textd;
     // Start is called before the first frame update
     void Awake()
@@ -29,6 +30,7 @@ public class InventoryManager  : MonoBehaviour
     }
     private void Update()
     {
+        spawnb=D.giveb;
         if(spawn!=null)
         {
             Tuple<bool, int> tuple = GetFreeCell();
@@ -40,8 +42,20 @@ public class InventoryManager  : MonoBehaviour
             takei.give=null;
         }
         spawn=takei.give;
+        if(spawnb!=null)
+        {
+            Tuple<bool, int> tuple = GetFreeCell();
+            if (tuple.Item1)
+            {
+                inventoryCells[tuple.Item2].CurrentItem = spawnb;
+                UpdateCells();
+            }
+            D.giveb=null;
+        }
+        spawnb=D.giveb;
+        spawn=takei.give;
         //textd.text=(.CurrentItem.Name).ToString();
-        Debug.Log(spawn);
+        //Debug.Log(spawn);
 
         if (isDraggingItem&&DraggingCell.CurrentItem)
         {
